@@ -3,10 +3,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 
+
 //screens
 import HomeScreen from "./screens/HomeScreen";
 import SettingsScreen from "./screens/SettingsScreen";
 import StackScreen from "./screens/StackScreen";
+import MyKeyboard from "./src/components/MyKeyboard";
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -23,7 +25,7 @@ function MyStack() {
             />
             <HomeStackNavigator.Screen
                 name="Stack"
-                component={StackScreen}
+                component={MyKeyboard}
                 options={{
                     headerBackTitleVisible: false,
                 }}

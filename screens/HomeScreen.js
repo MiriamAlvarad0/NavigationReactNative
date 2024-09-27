@@ -21,8 +21,6 @@ const HomeScreen = () => {
 
 
 
-
-            
             <TouchableOpacity
                 onPress={() => navigation.navigate("Stack")}
                 style={{
