@@ -3,17 +3,17 @@ import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 
 const SettingsScreen = () => {
     return (
+       
         <ScrollView style={styles.container}>
-            <Text style={styles.title}>texto de una imagen</Text>
-           
-           
-           
-
-            <Text style={styles.paragraph}>
-                soy una figura
-            </Text>
-        
+        <Text style={styles.title}>texto de una imagen</Text>
+            <Text style={styles.paragraph}>soy una imagen</Text>
+        <Text style={styles.paragraph}>soy una figura</Text>
+        <Image
+            source={require('../assets/adaptive-icon.png')} 
+            style={styles.image}
+        />
         </ScrollView>
+        
     );
 }
 
