@@ -1,7 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native"; // Asegúrate de importar correctamente react-native
+import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from "react-native"; 
 import { useNavigation } from "@react-navigation/native";
-import MyKeyboard from '../src/components/MyKeyboard'; // Importa el componente correctamente
 
 
 const HomeScreen = () => {
@@ -14,13 +13,9 @@ const HomeScreen = () => {
                     textAlign: "center",
                     marginTop: "20%"
                 }}
-            >
+            >  
             </Text>
     
- 
-
-
-
             <TouchableOpacity
                 onPress={() => navigation.navigate("Stack")}
                 style={{
@@ -41,10 +36,44 @@ const HomeScreen = () => {
                     Go to Stack
                 </Text>
             </TouchableOpacity>
+
+            <ScrollView style={styles.container}>
+                <Text style={styles.title}>Soy un pug dogo</Text>
+                 
+            <Image
+                source={require('../assets/pug.jpg')} 
+                style={styles.image}
+            />
+            </ScrollView>
+            
+            
+
         </View>
     );
 }
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 20, 
+        backgroundColor: '#f5f5f5',
 
+    },
+    title: {
+        fontSize: 26,
+        fontWeight: 'bold',
+        marginBottom: 20,
+        textAlign: 'center',
+        color: '#333',
+    },
+    image: {
+        width: '100%', 
+        height: 300,  
+        borderRadius: 0, 
+        marginBottom: 0,
+        resizeMode: 'contain', 
+    }
+   
+});
 
 export default HomeScreen;

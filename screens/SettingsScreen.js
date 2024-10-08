@@ -1,49 +1,55 @@
-import React from "react";
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 const SettingsScreen = () => {
+    
+    const [buttonColors, setButtonColors] = useState([
+        "#008CBA", 
+        "#28A745", 
+        "#FFC107", 
+        "#DC3545", 
+    ]);
+
+    const alternateColors = ["#FF5733", "#17A2B8", "#007BFF", "#6F42C1"]; 
+
+    
+    const changeColor = (index) => {
+        const newColors = [...buttonColors];
+        newColors[index] = newColors[index] === buttonColors[index] ? alternateColors[index] : buttonColors[index];
+        setButtonColors(newColors);
+    };
+
     return (
-       
-        <ScrollView style={styles.container}>
-        <Text style={styles.title}>texto de una imagen</Text>
-            <Text style={styles.paragraph}>soy una imagen</Text>
-        <Text style={styles.paragraph}>soy una figura</Text>
-        <Image
-            source={require('../assets/adaptive-icon.png')} 
-            style={styles.image}
-        />
-        </ScrollView>
-        
+        <View style={styles.container}>
+            {buttonColors.map((color, index) => (
+                <TouchableOpacity
+                    key={index}
+                    style={[styles.button, { backgroundColor: color }]} 
+                    onPress={() => changeColor(index)} 
+                >
+                    <Text style={styles.buttonText}>Botón {index + 1}</Text>
+                </TouchableOpacity>
+            ))}
+        </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20, 
-        backgroundColor: '#f5f5f5',
-
+        justifyContent: "center",
+        alignItems: "center",
     },
-    title: {
-        fontSize: 26,
-        fontWeight: 'bold',
-        marginBottom: 20,
-        textAlign: 'center',
-        color: '#333',
+    button: {
+        padding: 15,
+        borderRadius: 5,
+        marginVertical: 5, 
+        width: "80%", 
     },
-    image: {
-        width: '100%', 
-        height: 700,  
-        borderRadius: 10, 
-        marginBottom: 70,
-        resizeMode: 'contain', 
-    },
-    paragraph: {
+    buttonText: {
+        color: "#FFFFFF",
         fontSize: 16,
-        lineHeight: 28,
-        textAlign: 'justify', 
-        marginBottom: 20, 
-        color: '#444', 
+        textAlign: "center",
     },
 });
 
